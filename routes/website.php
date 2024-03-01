@@ -16,11 +16,16 @@ use App\Http\Controllers\WebsiteController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Website/Index', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Website/Index', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//     ]);
+// });
 
-Route::get('/about', [WebsiteController::class, 'about']);
+Route::get('/', [WebsiteController::class, 'index']);
+Route::get('/cart', [WebsiteController::class, 'cart']);
+Route::get('/products', [WebsiteController::class, 'products']);
+Route::get('/product-details' , [WebsiteController::class, 'productDetails']);
+Route::get('/checkout' , [WebsiteController::class, 'checkout']);
+Route::get('/payment' , [WebsiteController::class, 'payment']);

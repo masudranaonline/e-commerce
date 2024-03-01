@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WebpageController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -23,3 +24,5 @@ require __DIR__.'/website.php';
 Route::group(['prefix' => 'cp'], function(){
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 })->middleware(['auth:sanctum', config('jetstream.auth_session'),'verified',]);
+
+// Route::get('/webpage', [WebpageController::class, 'index'])->name('webpage');
