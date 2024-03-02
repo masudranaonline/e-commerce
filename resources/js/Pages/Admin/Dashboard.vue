@@ -1,6 +1,6 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Breadcrumb from '@/Components/Breadcrumb.vue';
+import AppLayout from '@/Layouts/Admin/AppLayout.vue';
+import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
 
 
 
