@@ -2,7 +2,6 @@
 
 namespace App\Models\Admin;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,16 +10,17 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'name',
-        'image',
         'description',
+        'status',
+        'created_by',
+        'updated_by',
     ];
 
 
-    public function users()
+    public function createdBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function products()

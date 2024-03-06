@@ -12,27 +12,32 @@ class Product extends Model
 
     protected $fillable = [
         'category_id',
-        'user_id',
         'title',
         'description',
-        'image',
-        'custom_price',
-        'salse_price',
+        'cost_price',
+        'sale_price',
         'quantity',
-        'minimum_quantity',
+        'min_quantity',
         'sizes',
         'colors',
         'warranty',
+        'status',
+        'created_by',
+        'updated_by',
     ];
 
-
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

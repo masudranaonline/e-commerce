@@ -25,9 +25,9 @@ use App\Http\Controllers\Website\HomeController;
 //     ]);
 // });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/cart', [WebsiteController::class, 'cart']);
-Route::get('/products', [WebsiteController::class, 'products']);
-Route::get('/product-details' , [WebsiteController::class, 'productDetails']);
-Route::get('/checkout' , [WebsiteController::class, 'checkout']);
-Route::get('/payment' , [WebsiteController::class, 'payment']);
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/cart', [WebsiteController::class, 'cart'])->name('cart');
+Route::get('/products', [WebsiteController::class, 'products'])->name('products');
+Route::get('/product-details' , [WebsiteController::class, 'productDetails'])->name('product.details');
+Route::get('/checkout' , [WebsiteController::class, 'checkout'])->name('checkout');
+Route::get('/payment' , [WebsiteController::class, 'payment'])->name('payment');

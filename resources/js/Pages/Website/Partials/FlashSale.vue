@@ -1,5 +1,5 @@
 <script setup>
-    import Product from '@/components/website/Product.vue'
+    import Product from '@/Components/Website/Product.vue'
 </script>
 
 <template>
@@ -24,8 +24,8 @@
                 <Product></Product>
                 <Product></Product>
                 <Product></Product>
-                
-               
+
+
 
             </div>
         </div>

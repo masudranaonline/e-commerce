@@ -1,5 +1,5 @@
 <script setup>
-    import Product from '@/components/website/Product.vue'
+    import Product from '@/Components/Website/Product.vue'
 </script>
 <template>
     <div class="mx-auto max-w-7xl my-6  ">
@@ -29,7 +29,7 @@
                <Product></Product>
                <Product></Product>
             </div>
-            
+
             <div class="text-center">
                 <button
                     class="text-sm border border-gray-400 text-red-600 font-medium hover:bg-blue-400 hover:text-white px-4 py-1.5 rounded-sm">Load

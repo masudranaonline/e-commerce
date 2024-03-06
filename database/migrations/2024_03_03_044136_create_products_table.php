@@ -14,18 +14,21 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->float('cust_price');
-            $table->string('salse_price');
-            $table->string('quantity');
-            $table->string('minimum_quantity');
+            $table->float('cost_price')->nullable();
+            $table->string('sale_price')->nullable();
+            $table->string('quantity')->nullable();
+            $table->string('min_quantity')->nullable();
             $table->string('sizes')->nullable();
             $table->string('colors')->nullable();
             $table->string('warranty')->nullable();
+
+            $table->foreignId('created_by')->nullable()->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->onDelete('set null');
+            $table->boolean('status')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

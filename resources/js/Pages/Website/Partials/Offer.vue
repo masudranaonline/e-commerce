@@ -1,5 +1,5 @@
 <script setup>
-    import OfferData from '@/components/website/OfferData.vue'
+    import OfferData from '@/Components/Website/OfferData.vue'
 </script>
 <template>
 

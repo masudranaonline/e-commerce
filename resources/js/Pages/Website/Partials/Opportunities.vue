@@ -1,5 +1,5 @@
 <script setup>
-    import OpportunitiesData from '@/components/website/OpportunitiesData.vue'
+    import OpportunitiesData from '@/Components/Website/OpportunitiesData.vue'
 </script>
 
 <template>
@@ -10,7 +10,7 @@
             <OpportunitiesData></OpportunitiesData>
             <OpportunitiesData></OpportunitiesData>
             <OpportunitiesData></OpportunitiesData>
-           
+
 
         </div>
     </div>

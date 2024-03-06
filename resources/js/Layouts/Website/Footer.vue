@@ -34,16 +34,16 @@
                 <div class="">
                     <h1 class="text-xl text-white pb-4">Payment Methods</h1>
                     <div class="grid grid-cols-4 gap-4">
-                        <img src="/Images/bkash.png" alt="">
+                        <img src="/Images/bkash.PNG" alt="">
                         <img src="/Images/visa.PNG" alt="">
-                        <img src="/Images/roket.png" alt="">
-                        <img src="/Images/cashondelivery.png" alt="">
-                        <img src="/Images/easypaisa.png" alt="">
-                        <img src="/Images/master.png" alt="">
-                        <img src="/Images/nagod.png" alt="">
-                        <img src="/Images/bkash.png" alt="">
-                        <img src="/Images/bkash.png" alt="">
-                        <img src="/Images/bkash.png" alt="">
+                        <img src="/Images/roket.PNG" alt="">
+                        <img src="/Images/cashondelivery.PNG" alt="">
+                        <img src="/Images/easypaisa.PNG" alt="">
+                        <img src="/Images/master.PNG" alt="">
+                        <img src="/Images/nagod.PNG" alt="">
+                        <img src="/Images/bkash.PNG" alt="">
+                        <img src="/Images/bkash.PNG" alt="">
+                        <img src="/Images/bkash.PNG" alt="">
                     </div>
                 </div>
                 <div class="">

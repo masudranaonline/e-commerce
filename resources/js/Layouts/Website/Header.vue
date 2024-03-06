@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { Link } from '@inertiajs/vue3';
+</script>
 
 <template>
     <!--Start Topbar section-->
@@ -156,9 +158,8 @@
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                             </svg></a>
 
-                        <a href="#" class="border-r py-2 px-2"><svg class="h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
-                                viewBox="0 0 48 48">
+                        <a href="#" class="border-r py-2 px-2"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+                                x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
                                 <path fill="#f44336"
                                     d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z">
                                 </path>
@@ -187,8 +188,7 @@
 
                     <button id="dropdownHoverButton1" data-dropdown-toggle="dropdownHover1"
                         data-dropdown-trigger="hover"
-                        class=" border text-xs md:text-base font-medium inline-flex items-center pl-2 "
-                        type="button">
+                        class=" border text-xs md:text-base font-medium inline-flex items-center pl-2 " type="button">
                         Quick Link <p class="bg-yellow-300 py-2 px-2 ml-2"><i class="fa-solid fa-caret-down"></i></p>
                     </button>
 
@@ -233,16 +233,21 @@
                 <div class="col-span-1">
                     <form>
                         <div class="flex pt-3">
-                            <div class="relative w-full"><input type="search" id="location-search"
+                            <div class="relative w-full">
+                                <input type="search" id="location-search"
                                     class="block p-2.5 w-full z-20 text-sm text-gray-900 rounded-e-full rounded-s-full border border-gray-3000"
-                                    placeholder="Search..." required=""><button type="submit"
-                                    class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-blue-700 rounded-e-full border border-blue-700 hover:bg-blue-800"><svg
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    placeholder="Search..." required="">
+                                <button type="submit"
+                                    class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-blue-700 rounded-e-full border border-blue-700 hover:bg-blue-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                         aria-hidden="true" data-slot="icon" class="w-5 h-5">
                                         <path fill-rule="evenodd"
                                             d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
                                             clip-rule="evenodd"></path>
-                                    </svg><span class="sr-only">Search</span></button></div>
+                                    </svg>
+                                    <span class="sr-only">Search</span>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -259,32 +264,30 @@
                     class="flex items-center w-full md:w-auto justify-between md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
                     <div class="flex items-center gap-2 ">
 
-                        <a class="relative mr-2 hover:text-slate-500 dark:hover:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 focus:outline-none focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-500 dark:focus:text-slate-400 transition duration-150 ease-in-out"
-                            href="">
-                            <router-link to="/cart">
 
-                                <button type="button"
-                                    class="relative inline-flex items-center p-1 text-sm font-medium text-center  rounded-lg    focus:ring-blue-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-700  ">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                                    </svg>
+                        <Link :href="route('cart')"
+                            class="relative mr-2 hover:text-slate-500 dark:hover:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 focus:outline-none focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-500 dark:focus:text-slate-400 transition duration-150 ease-in-out">
 
-                                    <span class="sr-only">Notifications</span>
-                                    <div
-                                        class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                                        3
-                                    </div>
-                                </button>
+                        <button type="button"
+                            class="relative inline-flex items-center p-1 text-sm font-medium text-center  rounded-lg    focus:ring-blue-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-gray-700  ">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                            </svg>
 
-                            </router-link>
-                        </a>
+                            <span class="sr-only">Notifications</span>
+                            <div
+                                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                                3
+                            </div>
+                        </button>
+
+                        </Link>
                         <button title="Switch Dark/Light Mode"
                             class="inline-flex items-center justify-center p-2 rounded text-slate-400 dark:text-slate-500 hover:text-slate-500 dark:hover:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 focus:outline-none focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-500 dark:focus:text-slate-400 transition duration-150 ease-in-out"><!----><svg
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
-                                class="w-5 h-5 fill-current">
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true" data-slot="icon" class="w-5 h-5 fill-current">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z">
                                 </path>
@@ -331,20 +334,20 @@
                         aria-controls="navbar-primary" aria-expanded="false"><span class="sr-only">Open main
                             menu</span><svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15"></path>
                         </svg>
                     </button>
-
-
-
-
                 </div>
                 <div class="items-center hidden w-full md:w-auto md:flex md:order-1" id="navbar-primary">
                     <ul
                         class="flex flex-col gap-2 font-medium border border-gray-100 rounded-sm rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 dark:text-gray-200 md:dark:bg-gray-900 dark:border-gray-700">
-                        <li><router-link to="/" aria-current="page"
-                                class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium">Home</router-link>
+                        <li>
+
+                            <Link :href="route('index')" aria-current="page"
+                                class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium">Home
+
+                            </Link>
                         </li>
                         <li><button id="dropdownNavbarLink" data-dropdown-toggle="Products3"
                                 data-dropdown-trigger="hover"
@@ -362,11 +365,13 @@
                                 <ul class="text-base text-gray-700 dark:text-gray-200"
                                     aria-labelledby="dropdownLargeButton">
                                     <li>
-                                        <router-link
+
+                                        <Link
                                             class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
                                             to="/product-list">All Products
-                                        </router-link>
-                                        
+
+                                        </Link>
+
                                     </li>
                                 </ul>
                             </div>
@@ -386,12 +391,24 @@
                                 style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(360.8px, -28px, 0px);">
                                 <ul class="text-base text-gray-700 dark:text-gray-200"
                                     aria-labelledby="dropdownLargeButton">
-                                    <li><a class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
-                                            href="">Transportation</a></li>
-                                    <li><a class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
-                                            href="">Automotive</a></li>
-                                    <li><a class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
-                                            href="">Cooking Utensils</a></li>
+                                    <li>
+                                        <a class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
+                                            href="">
+                                            Transportation
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
+                                            href="">
+                                            Automotive
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
+                                            href="">
+                                            Cooking Utensils
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -400,12 +417,16 @@
                                 class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium"
                                 href="">Blog</a>
                         </li>
-                        <li><a aria-current="page"
+                        <li>
+                            <a aria-current="page"
                                 class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium"
-                                href="">Gallery</a></li>
-                        <li><a aria-current="page"
+                                href="">Gallery</a>
+                        </li>
+                        <li>
+                            <a aria-current="page"
                                 class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium"
-                                href="">Contact</a></li><!----><!----><!----><!---->
+                                href="">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </div>

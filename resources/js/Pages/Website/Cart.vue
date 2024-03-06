@@ -2,8 +2,8 @@
     // import CartProduct from '@/components/website/CartProduct.vue';
     // import OrderSummary from '@/components/website/OrderSummary.vue';
 
-    import CartProduct from '@/Components/website/CartProduct.vue';
-    import OrderSummary from '@/Components/website/OrderSummary.vue';
+    import CartProduct from '@/Components/Website/CartProduct.vue';
+    import OrderSummary from '@/Components/Website/OrderSummary.vue';
 
     import Layout from '@/Layouts/Website/Layout.vue';
 </script>
