@@ -1,5 +1,7 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+    import {
+        Link
+    } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -158,8 +160,9 @@ import { Link } from '@inertiajs/vue3';
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                             </svg></a>
 
-                        <a href="#" class="border-r py-2 px-2"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg"
-                                x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                        <a href="#" class="border-r py-2 px-2"><svg class="h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                                viewBox="0 0 48 48">
                                 <path fill="#f44336"
                                     d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z">
                                 </path>
@@ -188,7 +191,8 @@ import { Link } from '@inertiajs/vue3';
 
                     <button id="dropdownHoverButton1" data-dropdown-toggle="dropdownHover1"
                         data-dropdown-trigger="hover"
-                        class=" border text-xs md:text-base font-medium inline-flex items-center pl-2 " type="button">
+                        class=" border text-xs md:text-base font-medium inline-flex items-center pl-2 "
+                        type="button">
                         Quick Link <p class="bg-yellow-300 py-2 px-2 ml-2"><i class="fa-solid fa-caret-down"></i></p>
                     </button>
 
@@ -270,8 +274,8 @@ import { Link } from '@inertiajs/vue3';
 
                         <button type="button"
                             class="relative inline-flex items-center p-1 text-sm font-medium text-center  rounded-lg    focus:ring-blue-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-gray-700  ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-700  ">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                             </svg>
@@ -286,12 +290,14 @@ import { Link } from '@inertiajs/vue3';
                         </Link>
                         <button title="Switch Dark/Light Mode"
                             class="inline-flex items-center justify-center p-2 rounded text-slate-400 dark:text-slate-500 hover:text-slate-500 dark:hover:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 focus:outline-none focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-500 dark:focus:text-slate-400 transition duration-150 ease-in-out"><!----><svg
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true" data-slot="icon" class="w-5 h-5 fill-current">
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
+                                class="w-5 h-5 fill-current">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z">
                                 </path>
-                            </svg></button>
+                            </svg>
+                        </button>
 
                         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
                             class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -324,18 +330,22 @@ import { Link } from '@inertiajs/vue3';
                             </ul>
                             <div class="py-2">
                                 <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                    out</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                    Sign out
+                                </a>
                             </div>
                         </div>
                     </div>
                     <button data-collapse-toggle="navbar-primary" type="button"
                         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-sm md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="navbar-primary" aria-expanded="false"><span class="sr-only">Open main
-                            menu</span><svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 1h15M1 7h15M1 13h15"></path>
+                        aria-controls="navbar-primary" aria-expanded="false"><span class="sr-only">
+                            Open main menu
+                        </span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M1 1h15M1 7h15M1 13h15">
+                            </path>
                         </svg>
                     </button>
                 </div>
@@ -345,19 +355,22 @@ import { Link } from '@inertiajs/vue3';
                         <li>
 
                             <Link :href="route('index')" aria-current="page"
-                                class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium">Home
-
+                                class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium">
+                            Home
                             </Link>
                         </li>
-                        <li><button id="dropdownNavbarLink" data-dropdown-toggle="Products3"
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="Products3"
                                 data-dropdown-trigger="hover"
                                 class="font-medium w-full md:w-auto text-base px-2 py-3 text-center inline-flex items-center hover:bg-[#ffab1f] hover:text-white">Products
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                     aria-hidden="true" data-slot="icon" class="w-4 h-4 ms-1 items-center">
                                     <path fill-rule="evenodd"
                                         d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
-                                        clip-rule="evenodd"></path>
-                                </svg></button>
+                                        clip-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </button>
                             <div id="Products3"
                                 class="z-20 hidden font-medium bg-white rounded-sm shadow min-w-44 dark:bg-gray-700 dark:divide-gray-600"
                                 data-popper-placement="top"
@@ -368,23 +381,25 @@ import { Link } from '@inertiajs/vue3';
 
                                         <Link
                                             class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
-                                            to="/product-list">All Products
-
+                                            to="/product-list">
+                                        All Products
                                         </Link>
-
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><button id="dropdownNavbarLink" data-dropdown-toggle="Application4"
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="Application4"
                                 data-dropdown-trigger="hover"
                                 class="font-medium w-full md:w-auto text-base px-2 py-3 text-center inline-flex items-center hover:bg-[#ffab1f] hover:text-white">Application
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                     aria-hidden="true" data-slot="icon" class="w-4 h-4 ms-1 items-center">
                                     <path fill-rule="evenodd"
                                         d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
-                                        clip-rule="evenodd"></path>
-                                </svg></button>
+                                        clip-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </button>
                             <div id="Application4"
                                 class="z-20 hidden font-medium bg-white rounded-sm shadow min-w-44 dark:bg-gray-700 dark:divide-gray-600"
                                 data-popper-placement="top"
@@ -415,17 +430,23 @@ import { Link } from '@inertiajs/vue3';
                         <li>
                             <a aria-current="page"
                                 class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium"
-                                href="">Blog</a>
+                                href="">
+                                Blog
+                            </a>
                         </li>
                         <li>
                             <a aria-current="page"
                                 class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium"
-                                href="">Gallery</a>
+                                href="">
+                                Gallery
+                            </a>
                         </li>
                         <li>
                             <a aria-current="page"
                                 class="hover:bg-[#ffab1f] hover:text-white block px-2 py-3 text-base font-medium"
-                                href="">Contact</a>
+                                href="">
+                                Contact
+                            </a>
                         </li>
                     </ul>
                 </div>
