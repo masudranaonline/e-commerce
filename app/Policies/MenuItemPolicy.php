@@ -2,10 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Product;
+use App\Models\MenuItem;
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 
-class ProductPolicy
+class MenuItemPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -18,7 +19,7 @@ class ProductPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Product $product): bool
+    public function view(User $user, MenuItem $menuItem): bool
     {
         //
     }
@@ -34,7 +35,7 @@ class ProductPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Product $product): bool
+    public function update(User $user, MenuItem $menuItem): bool
     {
         //
     }
@@ -42,7 +43,7 @@ class ProductPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Product $product): bool
+    public function delete(User $user, MenuItem $menuItem): bool
     {
         //
     }
@@ -50,7 +51,7 @@ class ProductPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Product $product): bool
+    public function restore(User $user, MenuItem $menuItem): bool
     {
         //
     }
@@ -58,7 +59,7 @@ class ProductPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Product $product): bool
+    public function forceDelete(User $user, MenuItem $menuItem): bool
     {
         //
     }

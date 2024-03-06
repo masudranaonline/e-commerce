@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Admin;
 
-use App\Models\User;
 use App\Models\Admin\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

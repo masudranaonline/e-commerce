@@ -17,7 +17,6 @@ class Category extends Model
         'updated_by',
     ];
 
-
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

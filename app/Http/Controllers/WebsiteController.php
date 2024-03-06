@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
@@ -11,6 +10,7 @@ class WebsiteController extends Controller
     {
         return Inertia::render('Website/Home');
     }
+
     public function cart()
     {
         return Inertia::render('Website/Cart');

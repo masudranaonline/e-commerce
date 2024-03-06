@@ -1,11 +1,10 @@
 <?php
 
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
-use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Website\HomeController;
-
+use App\Http\Controllers\WebsiteController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +27,6 @@ use App\Http\Controllers\Website\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/cart', [WebsiteController::class, 'cart'])->name('cart');
 Route::get('/products', [WebsiteController::class, 'products'])->name('products');
-Route::get('/product-details' , [WebsiteController::class, 'productDetails'])->name('product.details');
-Route::get('/checkout' , [WebsiteController::class, 'checkout'])->name('checkout');
-Route::get('/payment' , [WebsiteController::class, 'payment'])->name('payment');
+Route::get('/product-details', [WebsiteController::class, 'productDetails'])->name('product.details');
+Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout');
+Route::get('/payment', [WebsiteController::class, 'payment'])->name('payment');

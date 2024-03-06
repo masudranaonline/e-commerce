@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Website;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
+use App\Http\Requests\StoreMenuItemRequest;
+use App\Http\Requests\UpdateMenuItemRequest;
+use App\Models\MenuItem;
 
-class HomeController extends Controller
+class MenuItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('Website/Home');
-
+        //
     }
 
     /**
@@ -28,7 +27,7 @@ class HomeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMenuItemRequest $request)
     {
         //
     }
@@ -36,7 +35,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(MenuItem $menuItem)
     {
         //
     }
@@ -44,7 +43,7 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(MenuItem $menuItem)
     {
         //
     }
@@ -52,7 +51,7 @@ class HomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateMenuItemRequest $request, MenuItem $menuItem)
     {
         //
     }
@@ -60,7 +59,7 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(MenuItem $menuItem)
     {
         //
     }
