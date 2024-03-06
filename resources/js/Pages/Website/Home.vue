@@ -21,10 +21,8 @@
 
         <FlashSale></FlashSale>
 
-        <!--start categories section-->
         <Categories></Categories>
 
-        <!--start product section-->
         <Products></Products>
    </Layout>
     
