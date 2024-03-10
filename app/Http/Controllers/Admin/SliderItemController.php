@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreMenuItemRequest;
-use App\Http\Requests\UpdateMenuItemRequest;
-use App\Models\MenuItem;
+use App\Models\SliderItem;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSliderItemRequest;
+use App\Http\Requests\UpdateSliderItemRequest;
 
-class MenuItemController extends Controller
+class SliderItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class MenuItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMenuItemRequest $request)
+    public function store(StoreSliderItemRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class MenuItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MenuItem $menuItem)
+    public function show(SliderItem $sliderItem)
     {
         //
     }
@@ -43,7 +44,7 @@ class MenuItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MenuItem $menuItem)
+    public function edit(SliderItem $sliderItem)
     {
         //
     }
@@ -51,7 +52,7 @@ class MenuItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMenuItemRequest $request, MenuItem $menuItem)
+    public function update(UpdateSliderItemRequest $request, SliderItem $sliderItem)
     {
         //
     }
@@ -59,7 +60,7 @@ class MenuItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MenuItem $menuItem)
+    public function destroy(SliderItem $sliderItem)
     {
         //
     }

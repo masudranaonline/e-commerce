@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Admin;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,7 +17,9 @@ class MenuFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'          => $this->faker->sentence(),
+            'location'      => $this->faker->sentence(),
+
         ];
     }
 }

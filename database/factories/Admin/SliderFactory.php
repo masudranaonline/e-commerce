@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Admin;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,7 +17,8 @@ class SliderFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title'         => $this->faker->sentence(),
+            'location'      => $this->faker->sentence(),
         ];
     }
 }

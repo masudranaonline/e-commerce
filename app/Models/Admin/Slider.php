@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use App\Models\SliderItem;
 use Illuminate\Database\Eloquent\Model;

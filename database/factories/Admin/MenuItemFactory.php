@@ -1,7 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Admin;
 
+use App\Models\Admin\Menu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,12 @@ class MenuItemFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'menu_id'       => Menu::all()->random()->id,
+            'title'         => $this->faker->sentence(),
+            'link'          => $this->faker->sentence(),
+            'target'        => $this->faker->sentence(),
+            'parents'       => $this->faker->sentence(),
+            
         ];
     }
 }

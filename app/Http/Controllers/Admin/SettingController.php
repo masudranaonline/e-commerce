@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreSliderItemRequest;
-use App\Http\Requests\UpdateSliderItemRequest;
-use App\Models\SliderItem;
+use App\Models\Setting;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSettingRequest;
+use App\Http\Requests\UpdateSettingRequest;
 
-class SliderItemController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class SliderItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSliderItemRequest $request)
+    public function store(StoreSettingRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class SliderItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SliderItem $sliderItem)
+    public function show(Setting $setting)
     {
         //
     }
@@ -43,7 +44,7 @@ class SliderItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SliderItem $sliderItem)
+    public function edit(Setting $setting)
     {
         //
     }
@@ -51,7 +52,7 @@ class SliderItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSliderItemRequest $request, SliderItem $sliderItem)
+    public function update(UpdateSettingRequest $request, Setting $setting)
     {
         //
     }
@@ -59,7 +60,7 @@ class SliderItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SliderItem $sliderItem)
+    public function destroy(Setting $setting)
     {
         //
     }

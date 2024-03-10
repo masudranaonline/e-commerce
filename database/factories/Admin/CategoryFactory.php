@@ -18,14 +18,14 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
-            'status' => $this->faker->boolean(90),
+            'name'          => $this->faker->sentence(),
+            'description'   => $this->faker->paragraph(),
+            'status'        => $this->faker->boolean(90),
 
-            'created_by' => User::all()->random()->id,
-            'updated_by' => User::all()->random()->id,
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'created_by'    => User::all()->random()->id,
+            'updated_by'    => User::all()->random()->id,
+            'created_at'    => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at'    => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }
