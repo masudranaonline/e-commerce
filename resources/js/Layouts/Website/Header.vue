@@ -378,10 +378,9 @@
                                 <ul class="text-base text-gray-700 dark:text-gray-200"
                                     aria-labelledby="dropdownLargeButton">
                                     <li>
-
                                         <Link
-                                            class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
-                                            to="/product-list">
+                                            :href="route('products')"
+                                            class="border-b block px-4 py-2 hover:bg-[#ffab1f] hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
                                         All Products
                                         </Link>
                                     </li>

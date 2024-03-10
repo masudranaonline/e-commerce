@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('slider_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('slider_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->string('description');
+            $table->string('image');
+            $table->string('link');
             $table->timestamps();
         });
     }
