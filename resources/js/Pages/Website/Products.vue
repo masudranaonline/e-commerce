@@ -1,6 +1,5 @@
 <script setup>
-    // import Product from '../components/Product.vue'
-    import Product from '@/Components/website/Product.vue';
+    import Product from '@/Components/Website/Product.vue';
     import Layout from '@/Layouts/Website/Layout.vue';
 
 </script>

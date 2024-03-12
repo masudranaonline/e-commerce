@@ -2,24 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Product;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use Inertia\Inertia;
+use App\Models\Brand;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBrandRequest;
+use App\Http\Requests\UpdateBrandRequest;
 
-class ProductController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::all();
-
-        return Inertia::render('Admin/Products/Index',[
-            'products' => $products,
-        ]);
+        return Inertia::render('Admin/Brands/Index');
     }
 
     /**
@@ -27,13 +23,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/Products/Create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreBrandRequest $request)
     {
         //
     }
@@ -41,7 +37,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Brand $brand)
     {
         //
     }
@@ -49,15 +45,15 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Brand $brand)
     {
-        
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateBrandRequest $request, Brand $brand)
     {
         //
     }
@@ -65,7 +61,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Brand $brand)
     {
         //
     }

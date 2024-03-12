@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\MenuItem;
 use App\Models\User;
+use App\Models\Admin\MenuItem;
 use Illuminate\Auth\Access\Response;
 
 class MenuItemPolicy

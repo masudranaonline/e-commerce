@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Slider;
 use App\Models\User;
+use App\Models\Admin\Slider;
 use Illuminate\Auth\Access\Response;
 
 class SliderPolicy

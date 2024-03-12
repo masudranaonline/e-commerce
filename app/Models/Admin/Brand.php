@@ -4,14 +4,11 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
 use App\Models\User;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Category extends Model implements HasMedia
+class Brand extends Model
 {
     use HasFactory;
-    use InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -19,6 +16,7 @@ class Category extends Model implements HasMedia
         'status',
         'created_by',
         'updated_by',
+
     ];
 
     public function createdBy()

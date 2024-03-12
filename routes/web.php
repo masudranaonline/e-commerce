@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\WebpageController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\WebpageController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,12 @@ require __DIR__.'/website.php';
 Route::group(['prefix' => 'cp'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::resource('categories', CategoryController::class);
+    Route::resource('brands', BrandController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('vendors', VendorController::class);
+    
+
 })->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
 
 // Route::get('/webpage', [WebpageController::class, 'index'])->name('webpage');
