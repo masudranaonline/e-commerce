@@ -1,6 +1,8 @@
 <script setup>
     import AppLayout from '@/Layouts/Admin/AppLayout.vue';
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
+    import TextInput from '@/Components/Admin/TextInput.vue';
+    import InputLabel from '@/Components/Admin/InputLabel.vue';
 
     const props = defineProps({
         categories: Object
@@ -46,12 +48,10 @@
                         <form class="p-4 md:p-5">
                             <div class="grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    <label for="name"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category
-                                        Name</label>
-                                    <input type="text" name="name" id="name"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Type Category name" required="">
+                                    
+                                        <InputLabel>Category Name</InputLabel>
+                                        <TextInput v-model="" type="text" placeholder="Type Category name" required=""></TextInput>
+                                    
                                 </div>
                             </div>
                             <button type="submit"

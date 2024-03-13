@@ -26,7 +26,7 @@
         quantity: '',
         min_quantity: '',
         sizes: '',
-        color: '',
+        colors: '',
         warranty: '',
         status: '',
     });
@@ -42,24 +42,6 @@
             },
             preserveScroll: true
         })
-
-        // try {
-        //     const response = await form.post(route('products.store'), {
-        //         preserveScroll: true
-        //     });
-
-        //     alert('Product added successfully!');
-        // } catch (error) {
-        //     if (error.response) {
-        //         const errors = error.response.data.errors; // 
-
-        //         for (const field in errors) {
-        //             console.error(`Error in field ${field}: ${errors[field][0]}`);
-        //         }
-        //     } else {
-        //         console.error('An error occurred:', error);
-        //     }
-        // }
     };
 </script>
 <template>
@@ -69,7 +51,7 @@
         <div class="py-4 bg-white px-4 mt-4 text-center my-4 shadow-md">
             <h1 class="font-bold text-xl text-blue-600">Add Product</h1>
         </div>
-        {{ form }}
+       
         <div class="border p-4 bg-white rounded-sm shadow-md mb-4">
             <form @submit.prevent="productSubmit" enctype="multipart/form-data">
                 <div class="grid gap-6 mb-6 md:grid-cols-3">
@@ -145,7 +127,7 @@
                     </div>
                     <div>
                         <InputLabel>Color</InputLabel>
-                        <TextInput v-model="form.color" type="text" id="color" name="color" placeholder="color"
+                        <TextInput v-model="form.colors" type="text" id="color" name="color" placeholder="color"
                             required />
                     </div>
                     <div>

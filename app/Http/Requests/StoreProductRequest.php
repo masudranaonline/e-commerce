@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
             'category_id' => 'required',
             'brand_id' => 'required',
             'vendor_id' => 'required',
-            'name' => 'required|max:60',
+            'title' => 'required',
             'description' => 'required',
             'cost_price' => 'required',
             'sale_price' => 'required',
@@ -35,8 +35,8 @@ class StoreProductRequest extends FormRequest
             'colors' => 'required',
             'warranty' => 'required',
             'status' => 'required',
-            'created_by' => 'required',
-            'updated_by' => 'required',
+            // 'created_by' => 'required',
+            // 'updated_by' => 'required',
         ];
     }
 }

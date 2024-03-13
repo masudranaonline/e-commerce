@@ -2,7 +2,9 @@
 
 namespace Database\Factories\Admin;
 
+use App\Models\Admin\Brand;
 use App\Models\Admin\Category;
+use App\Models\Admin\Vendor;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +22,8 @@ class ProductFactory extends Factory
     {
         return [
             'category_id' => Category::all()->random()->id,
+            'brand_id' => Brand::all()->random()->id,
+            'vendor_id' => Vendor::all()->random()->id,
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'cost_price' => $this->faker->randomFloat(5, 0, 1000),
