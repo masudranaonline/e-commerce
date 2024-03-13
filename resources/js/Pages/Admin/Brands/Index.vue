@@ -1,6 +1,11 @@
 <script setup>
     import AppLayout from '@/Layouts/Admin/AppLayout.vue';
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
+
+
+    const props = defineProps({
+        brands: Object,
+    })
 </script>
 <template>
     <AppLayout>
@@ -81,13 +86,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr v-for="brand in props.brands" :key="brand.id" 
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="px-6 py-4">
-                                1
+                                {{ brand.id }}
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                {{ brand.name }}
                             </th>
                             <td class="px-6 py-4 flex gap-4">
                                 <button type="submit" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2"

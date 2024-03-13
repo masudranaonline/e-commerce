@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Inertia\Inertia;
-use App\Models\Brand;
+use App\Models\Admin\Brand;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
@@ -15,7 +15,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Brands/Index');
+        $brands = Brand::all();
+        return Inertia::render('Admin/Brands/Index', [
+            'brands' => $brands,
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**

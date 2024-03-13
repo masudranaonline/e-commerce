@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Inertia\Inertia;
+use App\Models\Admin\Brand;
+use App\Models\Admin\Vendor;
 use App\Models\Admin\Product;
+use App\Models\Admin\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -15,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('category')->get();
 
         return Inertia::render('Admin/Products/Index',[
             'products' => $products,
@@ -27,7 +30,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/Products/Create');
+        $categories = Category::all();
+        $brands = Brand::all();
+        $vendors = Vendor::all();
+
+        return Inertia::render('Admin/Products/Create', [
+            'categories' => $categories,
+            'brands' => $brands,
+            'vendors' => $vendors
+        ]);
     }
 
     /**
@@ -35,7 +46,34 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // return $request;
+        // Product::create([
+        //     'category_id' => $request->category_id,
+        //     'brand_id' => $request->brand_id,
+        //     'vendor_id' => $request->vendor_id,
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        //     'cost_price' => $request->cost_price,
+        //     'sale_price' => $request->sale_price,
+        //     'quantity' => $request->quantity,
+        //     'min_quantity' => $request->min_quantity,
+        //     'sizes' => $request->sizes,
+        //     'colors' => $request->colors,
+        //     'warranty' => $request->warranty,
+        //     'status' => $request->status,
+        //     'created_by' => "masud",
+        //     'updated_by' => "masud",
+
+        // ]);
+
+        $products = Product::create($request->all()); // Or use $request->all() if no validation
+
+        return Inertia::render('Products/Index', [
+            // ... data to pass to the frontend
+            'products' => $products
+        ]);
+
+        
     }
 
     /**

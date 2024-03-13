@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Categories/Index');
+        $categories = Category::all();
+        return Inertia::render('Admin/Categories/Index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
