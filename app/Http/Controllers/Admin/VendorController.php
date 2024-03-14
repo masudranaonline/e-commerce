@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Vendor;
+use Inertia\Inertia;
+use App\Models\Admin\Vendor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVendorRequest;
 use App\Http\Requests\UpdateVendorRequest;
-use Inertia\Inertia;
 
 class VendorController extends Controller
 {
@@ -15,7 +15,10 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Vendor/Index');
+        $vendors = Vendor::all();
+        return Inertia::render('Admin/Vendors/Index', [
+            'vendors' => $vendors,
+        ]);
     }
 
     /**
@@ -31,7 +34,15 @@ class VendorController extends Controller
      */
     public function store(StoreVendorRequest $request)
     {
-        //
+        Vendor::create([
+            'name' => $request->name,
+            'company_name' => $request->company_name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+
+        ]);
+
+        return Inertia::render('Admin/Vendors/Index');
     }
 
     /**

@@ -34,7 +34,13 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        Brand::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => true,
+            'created_by' => '1',
+            'updated_by' => '1',
+        ]);
     }
 
     /**

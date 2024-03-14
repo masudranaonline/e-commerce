@@ -1,6 +1,37 @@
 <script setup>
     import AppLayout from '@/Layouts/Admin/AppLayout.vue';
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
+    import InputLabel from '@/Components/Admin/InputLabel.vue';
+    import TextInput from '@/Components/Admin/TextInput.vue';
+    import {
+        useForm
+    } from '@inertiajs/vue3';
+
+    const props = defineProps({
+        vendors: Object
+    })
+
+    const form = useForm({
+        name: '',
+        company_name: '',
+        email: '',
+        phone: '',  
+
+    })
+
+    const brandSubmit = async => {
+        form.post(route('vendors.store'), {
+            onSuccess: (response) => {
+                alert('Vendor added successfully');
+            },
+            onError: (response) => {
+                alert('Something went wrong');
+            },
+            preserveScroll: true
+        })
+    }
+
+    
 </script>
 <template>
     <AppLayout>
@@ -39,15 +70,29 @@
                             </button>
                         </div>
                         <!-- Modal body -->
-                        <form class="p-4 md:p-5">
+                        <form
+                        @submit.prevent="brandSubmit" enctype="multipart/form-data"
+                        class="p-4 md:p-5">
                             <div class="grid gap-4 mb-4 grid-cols-2">
+                               <div class="col-span-2">
+                                    <InputLabel>Vendor Name</InputLabel>
+                                    <TextInput v-model="form.name" type="text" placeholder="Type Vendor name"
+                                        required=""></TextInput>
+                                </div>
                                 <div class="col-span-2">
-                                    <label for="name"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category
-                                        Name</label>
-                                    <input type="text" name="name" id="name"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Type Vendor name" required="">
+                                    <InputLabel>Company Name</InputLabel>
+                                    <TextInput v-model="form.company_name" type="text" placeholder="Type company name"
+                                        required=""></TextInput>
+                                </div>
+                                <div class="col-span-2">
+                                    <InputLabel>Phone</InputLabel>
+                                    <TextInput v-model="form.phone" type="text" placeholder="Type phone number"
+                                        required=""></TextInput>
+                                </div>
+                                <div class="col-span-2">
+                                    <InputLabel>Email</InputLabel>
+                                    <TextInput v-model="form.email" type="text" placeholder="Type email address"
+                                        required=""></TextInput>
                                 </div>
                             </div>
                             <button type="submit"
@@ -70,10 +115,19 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Category Id
+                                Vendor Id
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Vendor name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Company name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Phone No
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Email
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -81,13 +135,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr v-for="vendor in props.vendors" :key="vendor.id"
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="px-6 py-4">
-                                1
+                                {{ vendor.id }}
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                {{ vendor.name }}
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ vendor.company_name }}
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ vendor.phone }}
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ vendor.email }}
                             </th>
                             <td class="px-6 py-4 flex gap-4">
                                 <button type="submit" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2"

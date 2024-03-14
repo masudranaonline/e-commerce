@@ -70,10 +70,7 @@ class ProductController extends Controller
 
         // $products = Product::create($request->all()); // Or use $request->all() if no validation
 
-        return Inertia::render('Products/Index', [
-            // ... data to pass to the frontend
-            'products' => $products
-        ]);
+        return Inertia::render('Products/Index');
 
         
     }

@@ -3,16 +3,37 @@
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
     import TextInput from '@/Components/Admin/TextInput.vue';
     import InputLabel from '@/Components/Admin/InputLabel.vue';
+    import { useForm } from '@inertiajs/vue3';
 
     const props = defineProps({
         categories: Object
     })
+
+    const form = useForm({
+        name: '',
+        'description': '',
+
+    });
+
+    const categorySubmit = async => {
+        form.post(route('categories.store'), {
+            onSuccess: (Response) => {
+                alert('Category added successfully');
+            },
+            onError: (Response) => {
+                alert('Something went wrong');
+            },
+            preserveScroll: true
+        });
+    }
+
+
 </script>
 <template>
     <AppLayout>
 
         <section>
-           <Breadcrumb></Breadcrumb>
+            <Breadcrumb></Breadcrumb>
             <div class="py-4 bg-white px-4 mt-4 text-center">
                 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                     class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
@@ -45,13 +66,21 @@
                             </button>
                         </div>
                         <!-- Modal body -->
-                        <form class="p-4 md:p-5">
+                        <form
+                         @submit.prevent="categorySubmit"
+                         enctype="multipart/form-data"
+                         class="p-4 md:p-5">
                             <div class="grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    
-                                        <InputLabel>Category Name</InputLabel>
-                                        <TextInput v-model="" type="text" placeholder="Type Category name" required=""></TextInput>
-                                    
+
+                                    <InputLabel>Category Name</InputLabel>
+                                    <TextInput v-model="form.name" type="text" placeholder="Type Category name" required=""></TextInput>
+
+                                </div>
+                                <div class="col-span-2">
+                                    <InputLabel>Description</InputLabel>
+                                    <textarea v-model="form.description" name="description" id="description" rows="5"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "></textarea>
                                 </div>
                             </div>
                             <button type="submit"
@@ -72,7 +101,7 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4 border">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr >
+                        <tr>
                             <th scope="col" class="px-6 py-3">
                                 Category Id
                             </th>
@@ -86,13 +115,13 @@
                     </thead>
                     <tbody>
                         <tr v-for="category in props.categories" :key="category.id"
-                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="px-6 py-4">
-                                {{ category.id}}
+                                {{ category . id }}
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ category.name }}
+                                {{ category . name }}
                             </th>
                             <td class="px-6 py-4 flex gap-4">
                                 <button type="submit" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2"

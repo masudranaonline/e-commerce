@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
+use App\Http\Requests\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -31,9 +32,17 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => true,
+            'created_by' => 1,
+            'updated_by' => 1
+        ]);
+
+        return Inertia::render('Admin/Categories/Index');
     }
 
     /**
