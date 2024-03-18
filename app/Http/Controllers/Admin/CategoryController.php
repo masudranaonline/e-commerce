@@ -34,7 +34,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        Category::create([
+        $categories = Category::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => true,
@@ -42,7 +42,9 @@ class CategoryController extends Controller
             'updated_by' => 1
         ]);
 
-        return Inertia::render('Admin/Categories/Index');
+        return Inertia::render('Admin/Categories/Index', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**

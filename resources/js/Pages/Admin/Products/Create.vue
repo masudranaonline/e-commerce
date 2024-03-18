@@ -29,6 +29,7 @@
         colors: '',
         warranty: '',
         status: '',
+        product_images: '',
     });
     // console.log(form);
 
@@ -53,7 +54,7 @@
         </div>
        
         <div class="border p-4 bg-white rounded-sm shadow-md mb-4">
-            <form @submit.prevent="productSubmit" enctype="multipart/form-data">
+            <form @submit.prevent="productSubmit" method="POST" enctype="multipart/form-data">
                 <div class="grid gap-6 mb-6 md:grid-cols-3">
                     <div>
 
@@ -75,7 +76,6 @@
                         <select v-model="form.brand_id" id="brand" name="brand"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Choose a brand</option>
-                            <option value="US">United States</option>
                             <option v-for="brand in props.brands" :key="brand.id" :value="brand.id">
                                 {{ brand . name }}</option>
                         </select>
@@ -90,8 +90,6 @@
                             <option value="US">United States</option>
                             <option v-for="vendor in props.vendors" :key="vendor.id" :value="vendor.id">
                                 {{ vendor . name }}</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
                         </select>
 
                     </div>
@@ -141,7 +139,7 @@
                             <InputLabel>Status</InputLabel>
                             <select v-model="form.status" id="status" name="status"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                <option selected>Choose a Vendor</option>
+                                <option selected>Choose a Status</option>
                                 <option :value="1">True</option>
                                 <option :value="0">False</option>
 
@@ -151,7 +149,7 @@
                 </div>
                 <div class="mb-6">
                     <InputLabel>Upload Image</InputLabel>
-                    <TextInput id="multiple_files" type="file" multiple class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"></TextInput>
+                    <TextInput id="multiple_files" v-model="form.product_images"  type="file" multiple class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"></TextInput>
                 </div>
                 <div class="mb-6">
                     <InputLabel>Discriptions</InputLabel>

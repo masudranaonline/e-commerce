@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('colors')->nullable();
             $table->string('warranty')->nullable();
 
-            $table->foreignId('created_by')->nullable()->onDelete('set null');
-            $table->foreignId('updated_by')->nullable()->onDelete('set null');
+            $table->string('created_by')->nullable()->onDelete('set null');
+            $table->string('updated_by')->nullable()->onDelete('set null');
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();

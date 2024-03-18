@@ -47,31 +47,38 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest  $request)
     {
-        // return $request;
-        // return $request->all();
-        $products = Product::create([
-            'category_id'   => $request->category_id,
-            'brand_id'      => $request->brand_id,
-            'vendor_id'     => $request->vendor_id,
-            'title'         => $request->title,
-            'description'   => $request->description,
-            'cost_price'    => $request->cost_price,
-            'sale_price'    => $request->sale_price,
-            'quantity'      => $request->quantity,
-            'min_quantity'  => $request->min_quantity,
-            'sizes'         => $request->sizes,
-            'colors'        => $request->colors,
-            'warranty'      => $request->warranty,
-            'status'        => $request->status,
-            'created_by'    => 1,
-            'updated_by'    => 1,
 
+        $validatedData = $request->validated();
+
+        // Create the product
+        $product = Product::create([
+            'category_id'   => $validatedData['category_id'],
+            'brand_id'      => $validatedData['brand_id'],
+            'vendor_id'     => $validatedData['vendor_id'],
+            'title'         => $validatedData['title'],
+            'description'   => $validatedData['description'],
+            'cost_price'    => $validatedData['cost_price'],
+            'sale_price'    => $validatedData['sale_price'],
+            'quantity'      => $validatedData['quantity'],
+            'min_quantity'  => $validatedData['min_quantity'],
+            'sizes'         => $validatedData['sizes'],
+            'colors'        => $validatedData['colors'],
+            'warranty'      => $validatedData['warranty'],
+            'status'        => $validatedData['status'],
+            'created_by'    => auth()->user()->name, // Get the authenticated user's ID
+            'updated_by'    => auth()->user()->name, // Get the authenticated user's ID
         ]);
-
-        // $products = Product::create($request->all()); // Or use $request->all() if no validation
-
+    
+        // Check if product images were uploaded
+        if ($request->hasFile('product_images')) {
+            // Loop through each uploaded file and store it using the Spatie Media Library
+            foreach ($request->file('product_images') as $image) {
+                $product->addMedia($image)->toMediaCollection('product_images');
+            }
+        }
+    
+        // Optionally, you can return a response here
         return Inertia::render('Products/Index');
-
         
     }
 

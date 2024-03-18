@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Setting;
+use Inertia\Inertia;
+use App\Models\Admin\Setting;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSettingRequest;
 use App\Http\Requests\UpdateSettingRequest;
@@ -14,7 +15,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Admin/Settings/Index', [
+            'settings' => Setting::all(),
+        ]);
     }
 
     /**

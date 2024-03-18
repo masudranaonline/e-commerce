@@ -114,7 +114,7 @@
                             {{ product.title }}
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            {{ product.color }}
                         </td>
                         <td class="px-6 py-4">
                             {{ product.category.name }}

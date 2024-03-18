@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\VendorController;
+use App\Models\Admin\Setting;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::group(['prefix' => 'cp'], function () {
     Route::resource('brands', BrandController::class);
     Route::resource('products', ProductController::class);
     Route::resource('vendors', VendorController::class);
+    Route::resource('settings', SettingController::class);
     
 
 })->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
