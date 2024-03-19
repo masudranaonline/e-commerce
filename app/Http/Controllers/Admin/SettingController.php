@@ -49,7 +49,9 @@ class SettingController extends Controller
      */
     public function edit(Setting $setting)
     {
-        //
+        return Inertia::render('Admin/Settings/Edit', [
+            'settings' => $setting,
+        ]);
     }
 
     /**

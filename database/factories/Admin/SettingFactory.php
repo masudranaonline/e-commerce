@@ -22,7 +22,7 @@ class SettingFactory extends Factory
             'site_logo'     => $this->faker->imageUrl(),
             'email'         => $this->faker->email(),
             'phone'         => $this->faker->phoneNumber(),
-            'whatsapp'      => $this->faker->phoneNumber(),
+            'whatsup'       => $this->faker->phoneNumber(),
             'address'       => $this->faker->address(),
             'facebook'      => $this->faker->url(),
             'twitter'       => $this->faker->url(),

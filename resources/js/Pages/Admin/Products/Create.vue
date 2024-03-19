@@ -64,7 +64,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Choose a category</option>
                             <option v-for="category in props.categories" :key="category.id" :value="category.id">
-                                {{ category . name }}
+                                {{ category.name }}
                             </option>
                         </select>
 
@@ -77,7 +77,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Choose a brand</option>
                             <option v-for="brand in props.brands" :key="brand.id" :value="brand.id">
-                                {{ brand . name }}</option>
+                                {{ brand.name }}</option>
                         </select>
 
                     </div>
@@ -89,7 +89,7 @@
                             <option selected>Choose a Vendor</option>
                             <option value="US">United States</option>
                             <option v-for="vendor in props.vendors" :key="vendor.id" :value="vendor.id">
-                                {{ vendor . name }}</option>
+                                {{ vendor.name }}</option>
                         </select>
 
                     </div>

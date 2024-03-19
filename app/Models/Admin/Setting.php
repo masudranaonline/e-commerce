@@ -15,7 +15,7 @@ class Setting extends Model
         'site_logo',
         'email',
         'phone',
-        'whatsapp',
+        'whatsup',
         'address',
         'facebook',
         'twitter',
