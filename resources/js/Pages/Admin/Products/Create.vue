@@ -29,7 +29,7 @@
         colors: '',
         warranty: '',
         status: '',
-        product_images: '',
+        // product_images: '',
     });
     // console.log(form);
 
@@ -37,6 +37,22 @@
         form.post(route('products.store'), {
             onSuccess: (response) => {
                 alert('Vendor added successfully');
+                form.reset(
+                    'category_id',
+                    'brand_id',
+                    'vendor_id',
+                    'title',
+                    'description',
+                    'cost_price',
+                    'sale_price',
+                    'quantity',
+                    'min_quantity',
+                    'sizes',
+                    'colors',
+                    'warranty',
+                    'status',
+                    'product_images'
+                );
             },
             onError: (response) => {
                 alert('Something went wrong');
@@ -52,7 +68,7 @@
         <div class="py-4 bg-white px-4 mt-4 text-center my-4 shadow-md">
             <h1 class="font-bold text-xl text-blue-600">Add Product</h1>
         </div>
-       
+
         <div class="border p-4 bg-white rounded-sm shadow-md mb-4">
             <form @submit.prevent="productSubmit" method="POST" enctype="multipart/form-data">
                 <div class="grid gap-6 mb-6 md:grid-cols-3">
@@ -64,7 +80,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Choose a category</option>
                             <option v-for="category in props.categories" :key="category.id" :value="category.id">
-                                {{ category.name }}
+                                {{ category . name }}
                             </option>
                         </select>
 
@@ -77,7 +93,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Choose a brand</option>
                             <option v-for="brand in props.brands" :key="brand.id" :value="brand.id">
-                                {{ brand.name }}</option>
+                                {{ brand . name }}</option>
                         </select>
 
                     </div>
@@ -89,7 +105,7 @@
                             <option selected>Choose a Vendor</option>
                             <option value="US">United States</option>
                             <option v-for="vendor in props.vendors" :key="vendor.id" :value="vendor.id">
-                                {{ vendor.name }}</option>
+                                {{ vendor . name }}</option>
                         </select>
 
                     </div>
@@ -125,8 +141,8 @@
                     </div>
                     <div>
                         <InputLabel>Color</InputLabel>
-                        <TextInput v-model="form.colors" type="text" id="color" name="color" placeholder="color"
-                            required />
+                        <TextInput v-model="form.colors" type="text" id="color" name="color"
+                            placeholder="color" required />
                     </div>
                     <div>
                         <InputLabel>warranty</InputLabel>
@@ -149,7 +165,9 @@
                 </div>
                 <div class="mb-6">
                     <InputLabel>Upload Image</InputLabel>
-                    <TextInput id="multiple_files" v-model="form.product_images"  type="file" multiple class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"></TextInput>
+                    <TextInput id="multiple_files" v-model="form.product_images" type="file" multiple
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                    </TextInput>
                 </div>
                 <div class="mb-6">
                     <InputLabel>Discriptions</InputLabel>
