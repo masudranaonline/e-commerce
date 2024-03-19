@@ -11,7 +11,7 @@ class UpdateSettingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class UpdateSettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'site_name' => 'required|string',
+            'site_description' => 'required|string',
+            'site_logo' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:15',
+            'whatsup' => 'required|string|max:15',
+            'address' => 'required|string',
+            'facebook' => 'required|string',
+            'twitter' => 'required|string',
+            'instagram' => 'required|string',
+            'youtube' => 'required|string',
+            'linkedin' => 'required|string',
+            'map' => 'required|string',
+            'copyright' => 'required|string',
+            'language' => 'required|string',
+
         ];
     }
 }

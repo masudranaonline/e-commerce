@@ -4,31 +4,59 @@
     import InputLabel from '@/Components/Admin/InputLabel.vue';
     import TextInput from '@/Components/Admin/TextInput.vue';
     import { useForm } from '@inertiajs/vue3';
-    import { reactive } from 'vue';
 
+    const props = defineProps ({
+        settings:Object
+    });
 
-    const props = defineProps({
-        settings: Object
-    })
 
     const form = useForm({
-        site_name: '',
-        site_description: '',
-        site_logo: '',
-        email: '',
-        phone: '',
-        whatsup: '',
-        address: '',
-        facebook: '',
-        twitter: '',
-        instagram: '',
-        youtube: '',
-        linkedin: '',
-        map: '',
-        copyright: '',
-        language: '',
+        site_name: props.settings.site_name,
+        site_description: props.settings.site_description,
+        site_logo: props.settings.site_logo,
+        email: props.settings.email,
+        phone: props.settings.phone,
+        whatsup: props.settings.whatsup,
+        address: props.settings.address,
+        facebook: props.settings.facebook,
+        twitter: props.settings.twitter,
+        instagram: props.settings.instagram,
+        youtube: props.settings.youtube,
+        linkedin: props.settings.linkedin,
+        map: props.settings.map,
+        copyright: props.settings.copyright,
+        language: props.settings.language,
 
     })
+
+    const SettingSubmit = async () => {
+        await form.put(route('settings.update', { setting: props.settings.id }), {
+            onSuccess: (Response) => {
+                alert('Update Success');
+            },
+            onError: (Response) => {
+                alert('Error')
+            },
+            preserveScroll: true
+        })
+    }
+//     const SettingSubmit = async () => {
+//     try {
+//         await form.put(route('settings.update', { setting: props.settings.id }), {
+//             onSuccess: (response) => {
+//                 alert('Update Success');
+//             },
+//             onError: (error) => {
+//                 alert('Error');
+//             },
+//             preserveScroll: true
+//         });
+//     } catch (error) {
+//         console.error('Error updating settings:', error);
+//     }
+// };
+
+
 </script>
 <template>
 
@@ -41,7 +69,7 @@
 
         <div class="border p-4 bg-white rounded-md shadow-md">
 
-            <form @submit.prevent="submit" method="PUT" enctype="multipart/form-data">
+            <form @submit.prevent="SettingSubmit" method="PUT" enctype="multipart/form-data">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Settings</h2>
@@ -51,16 +79,15 @@
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div class="sm:col-span-4">
                                 <InputLabel>Site Name</InputLabel>
-                                <TextInput id="site_name" type="text" v-model="form.site_name" :value="props.settings.site_name" />
+                                <TextInput id="site_name" type="text" v-model="form.site_name"  />
 
                             </div>
 
                             <div class="col-span-full">
                                 <InputLabel>Description</InputLabel>
                                 <div class="mt-2">
-                                    <textarea id="about" name="about" rows="3"
+                                    <textarea id="about" name="about" rows="3" v-model="form.site_description"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        {{ props.settings.description }}
                                     </textarea>
                                 </div>
                                 <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about your
@@ -94,35 +121,35 @@
                             <div class="sm:col-span-3">
                                 <InputLabel>Email</InputLabel>
                                 <div class="mt-2">
-                                    <TextInput id="email" type="text" v-memo="form.email" :value="props.settings.email" />
+                                    <TextInput id="email" type="text" v-model="form.email" />
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
                                 <InputLabel>Phone No</InputLabel>
                                 <div class="mt-2">
-                                    <TextInput id="email" type="text" v-model="form.phone" :value="props.settings.phone" />
+                                    <TextInput id="email" type="text" v-model="form.phone" />
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
                                 <InputLabel>What's up</InputLabel>
                                 <div class="mt-2">
-                                    <TextInput id="email" type="text" v-model="form.whatsup" :value="props.settings.whatsup" />
+                                    <TextInput id="email" type="text" v-model="form.whatsup" />
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
                                 <InputLabel>Address</InputLabel>
                                 <div class="mt-2">
-                                    <TextInput id="email" type="text" v-model="form.address" :value="props.settings.address" />
+                                    <TextInput id="email" type="text" v-model="form.address" />
                                 </div>
                             </div>
 
                             <div class="sm:col-span-2 sm:col-start-1 col-span-4 flex items-center gap-4 ">
                                 <InputLabel class="w-32">Facebook</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="email" type="text" v-model="form.facebook" :value="props.settings.facebook"
+                                    <TextInput id="email" type="text" v-model="form.facebook"
                                         aria-placeholder="https://facebook.com" />
                                 </div>
                             </div>
@@ -138,7 +165,7 @@
                             <div class="sm:col-span-2 sm:col-start-1 col-span-4 flex items-center gap-4 ">
                                 <InputLabel class="w-32">Instagram</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="email" type="text" v-model="form.instagram" :value="props.settings.instagram"
+                                    <TextInput id="email" type="text" v-model="form.instagram"
                                         aria-placeholder="https://instagram.com" />
                                 </div>
                             </div>
@@ -146,7 +173,7 @@
                             <div class="sm:col-span-2 sm:col-start-1 col-span-4 flex items-center gap-4 ">
                                 <InputLabel class="w-32">Youtube</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="email" type="text" v-model="form.youtube" :value="props.settings.youtube"
+                                    <TextInput id="email" type="text" v-model="form.youtube" 
                                         aria-placeholder="https://youtube.com" />
                                 </div>
                             </div>
@@ -154,7 +181,7 @@
                             <div class="sm:col-span-2 sm:col-start-1 col-span-4 flex items-center gap-4 ">
                                 <InputLabel class="w-32">Linkedin</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="email" v-model="form.linkedin" type="text" :value="props.settings.linkedin"
+                                    <TextInput id="email" v-model="form.linkedin" type="text"
                                         aria-placeholder="https://linkedin.com" />
                                 </div>
                             </div>
@@ -162,7 +189,7 @@
                             <div class="col-span-full">
                                 <InputLabel class="w-32">Coppyright</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="coppyright" type="text" v-model="form.coppyright" :value="props.settings.copyright"
+                                    <TextInput id="coppyright" type="text" v-model="form.copyright" 
                                         aria-placeholder="https://coppyright.com" />
                                 </div>
                             </div>
@@ -170,7 +197,7 @@
                             <div class="sm:col-span-3 sm:col-start-1">
                                 <InputLabel class="w-32">Language</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="language" type="text" v-model="form.language" :value="props.settings.language"
+                                    <TextInput id="language" type="text" v-model="form.language" 
                                         aria-placeholder="language" />
                                 </div>
                             </div>
@@ -178,7 +205,7 @@
                             <div class="sm:col-span-3">
                                 <InputLabel class="w-32">Map Address</InputLabel>
                                 <div class=" w-full">
-                                    <TextInput id="map" type="text" v-model="form.map" :value="props.settings.map"
+                                    <TextInput id="map" type="text" v-model="form.map"
                                         aria-placeholder="map" />
                                 </div>
                             </div>
