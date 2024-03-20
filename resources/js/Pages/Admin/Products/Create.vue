@@ -36,7 +36,7 @@
     const productSubmit = async () => {
         form.post(route('products.store'), {
             onSuccess: (response) => {
-                alert('Vendor added successfully');
+                alert('Product added successfully');
                 form.reset(
                     'category_id',
                     'brand_id',
@@ -53,6 +53,7 @@
                     'status',
                     'product_images'
                 );
+                
             },
             onError: (response) => {
                 alert('Something went wrong');

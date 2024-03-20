@@ -18,8 +18,8 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'          => $this->faker->sentence(),
-            'description'   => $this->faker->paragraph(),
+            'name'          => $this->faker->word(),
+            'description'   => $this->faker->sentence(),
             'status'        => $this->faker->boolean(90),
             'created_by'    => User::all()->random()->id,
             'updated_by'    => User::all()->random()->id,

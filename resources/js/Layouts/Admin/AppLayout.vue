@@ -11,6 +11,7 @@ import ResponsiveNavLink from '@/Components/Admin/ResponsiveNavLink.vue';
 import Header from './Header.vue';
 import Sidebar from './Sidebar.vue';
 import Footer from './Footer.vue';
+import Alert from './Alert.vue';
 
 defineProps({
     title: String,
