@@ -1,66 +1,73 @@
 <script setup>
-    import AppLayout from '@/Layouts/Admin/AppLayout.vue';
-    import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
-    import InputLabel from '@/Components/Admin/InputLabel.vue';
-    import TextInput from '@/Components/Admin/TextInput.vue';
-    import PrimaryButton from '@/Components/Admin/PrimaryButton.vue';
-    import SecondaryButton from '@/Components/Admin/SecondaryButton.vue';
-    import {
-        useForm
-    } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/Admin/AppLayout.vue';
+import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
+import InputLabel from '@/Components/Admin/InputLabel.vue';
+import TextInput from '@/Components/Admin/TextInput.vue';
+import PrimaryButton from '@/Components/Admin/PrimaryButton.vue';
+import SecondaryButton from '@/Components/Admin/SecondaryButton.vue';
+import ImageInput from '@/Components/ImageInput.vue';
+import {
+    useForm
+} from '@inertiajs/vue3';
 
-    const props = defineProps({
-        'categories': Object,
-        'brands': Object,
-        'vendors': Object
+const props = defineProps({
+    'categories': Object,
+    'brands': Object,
+    'vendors': Object
+})
+
+const form = useForm({
+    image: null,
+    category_id: props.categories[0].id,
+    brand_id: props.brands[0].id,
+    vendor_id: null,
+    title: '',
+    description: '',
+    cost_price: '',
+    sale_price: '',
+    quantity: '',
+    min_quantity: '',
+    sizes: '',
+    colors: '',
+    warranty: '',
+    status: 1,
+});
+// console.log(form);
+
+const productSubmit = async () => {
+    form.post(route('products.store'), {
+        onSuccess: (response) => {
+            // alert('Product added successfully');
+            form.reset(
+                'category_id',
+                'brand_id',
+                'vendor_id',
+                'title',
+                'description',
+                'cost_price',
+                'sale_price',
+                'quantity',
+                'min_quantity',
+                'sizes',
+                'colors',
+                'warranty',
+                'status',
+                'product_images'
+            );
+
+        },
+        onError: (response) => {
+            alert('Something went wrong');
+        },
+        preserveScroll: true
     })
+};
 
-    const form = useForm({
-        category_id: '',
-        brand_id: '',
-        vendor_id: '',
-        title: '',
-        description: '',
-        cost_price: '',
-        sale_price: '',
-        quantity: '',
-        min_quantity: '',
-        sizes: '',
-        colors: '',
-        warranty: '',
-        status: '',
-        // product_images: '',
-    });
-    // console.log(form);
-
-    const productSubmit = async () => {
-        form.post(route('products.store'), {
-            onSuccess: (response) => {
-                alert('Product added successfully');
-                form.reset(
-                    'category_id',
-                    'brand_id',
-                    'vendor_id',
-                    'title',
-                    'description',
-                    'cost_price',
-                    'sale_price',
-                    'quantity',
-                    'min_quantity',
-                    'sizes',
-                    'colors',
-                    'warranty',
-                    'status',
-                    'product_images'
-                );
-                
-            },
-            onError: (response) => {
-                alert('Something went wrong');
-            },
-            preserveScroll: true
-        })
-    };
+const fileChange = (value) => {
+    if (value.source === "image") {
+        form.image = value.file;
+    }
+};
 </script>
 <template>
     <AppLayout>
@@ -79,9 +86,9 @@
                         <InputLabel>Product Category</InputLabel>
                         <select v-model="form.category_id" id="category" name="category"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Choose a category</option>
+                            <option :value="null">Choose a category</option>
                             <option v-for="category in props.categories" :key="category.id" :value="category.id">
-                                {{ category . name }}
+                                {{ category.name }}
                             </option>
                         </select>
 
@@ -92,9 +99,9 @@
                         <InputLabel>Select an Brand</InputLabel>
                         <select v-model="form.brand_id" id="brand" name="brand"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Choose a brand</option>
+                            <option :value="null">Choose a brand</option>
                             <option v-for="brand in props.brands" :key="brand.id" :value="brand.id">
-                                {{ brand . name }}</option>
+                                {{ brand.name }}</option>
                         </select>
 
                     </div>
@@ -103,10 +110,10 @@
                         <InputLabel>Select an Vendor</InputLabel>
                         <select v-model="form.vendor_id" id="vendor" name="vendor"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Choose a Vendor</option>
+                            <option :value="null">Choose a Vendor</option>
                             <option value="US">United States</option>
                             <option v-for="vendor in props.vendors" :key="vendor.id" :value="vendor.id">
-                                {{ vendor . name }}</option>
+                                {{ vendor.name }}</option>
                         </select>
 
                     </div>
@@ -142,8 +149,8 @@
                     </div>
                     <div>
                         <InputLabel>Color</InputLabel>
-                        <TextInput v-model="form.colors" type="text" id="color" name="color"
-                            placeholder="color" required />
+                        <TextInput v-model="form.colors" type="text" id="color" name="color" placeholder="color"
+                            required />
                     </div>
                     <div>
                         <InputLabel>warranty</InputLabel>
@@ -156,9 +163,8 @@
                             <InputLabel>Status</InputLabel>
                             <select v-model="form.status" id="status" name="status"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                <option selected>Choose a Status</option>
-                                <option :value="1">True</option>
-                                <option :value="0">False</option>
+                                <option :value="1">Active</option>
+                                <option :value="0">Inactive</option>
 
                             </select>
                         </form>
@@ -166,9 +172,11 @@
                 </div>
                 <div class="mb-6">
                     <InputLabel>Upload Image</InputLabel>
-                    <TextInput id="multiple_files" v-model="form.product_images" type="file" multiple
+                    <!-- <TextInput id="multiple_files" @fileChange="fileChange" source="image" type="file" multiple
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
-                    </TextInput>
+                    </TextInput> -->
+
+                    <ImageInput v-model="form.image" @fileChange="fileChange" source="image" type="file" class="h-28 w-28"/>
                 </div>
                 <div class="mb-6">
                     <InputLabel>Discriptions</InputLabel>

@@ -47,6 +47,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        // dd($request->all());
         $product = Product::create([
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
@@ -65,18 +66,11 @@ class ProductController extends Controller
             'updated_by' => auth()->user()->name, // Get the authenticated user's ID
         ]);
 
-        return Inertia::render('Admin/Products/Create', [
-            'successMessage' => $request->session()->get('success'),
-            'errorMessage' => $request->session()->get('error'),
-        ]);
+        if ($request->hasFile('image')) {
+            $product->addMediaFromRequest('image')->toMediaCollection('image');
+        }
 
-        // Check if product images were uploaded
-        // if ($request->hasFile('product_images')) {
-        //     // Loop through each uploaded file and store it using the Spatie Media Library
-        //     foreach ($request->file('product_images') as $image) {
-        //         $product->addMedia($image)->toMediaCollection('product_images');
-        //     }
-        // }
+        return back()->with('success', __('app.label.created_successfully', ['name' => $product->name]));
     }
 
     /**
@@ -85,9 +79,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         // dd($product);
-        return Inertia::render('Admin/Products/Show', [
-            
-        ]);
+        return Inertia::render('Admin/Products/Show', []);
     }
 
     /**
@@ -137,6 +129,28 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return back()->with('success', 'Deleted Successfully !');
+    }
+
+    public function forceDelete($product)
+    {
+        $product = Product::withTrashed()->find($product);
+        $product->forceDelete();
+    }
+
+    public function restore($product)
+    {
+        $product = Product::withTrashed()->find($product);
+        $product->restore();
+    }
+
+    public function trashList()
+    {
+        $products = Product::onlyTrashed()->paginate(10);
+        return Inertia::render('Admin/Products/TrashList', [
+            'products' => $products,
+        ]);
     }
 }
