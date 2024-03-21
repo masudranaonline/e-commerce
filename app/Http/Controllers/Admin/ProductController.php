@@ -19,7 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->paginate(10);
+        $products = Product::with(['category', 'media'])->paginate(10);
+        // return $products;
 
         return Inertia::render('Admin/Products/Index', [
             'products' => $products,
@@ -47,7 +48,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        // dd($request->all());
         $product = Product::create([
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
@@ -103,22 +103,22 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        // dd($request->all());
+       
         $product->update([
-            'category_id' => $request->category_id,
-            'brand_id' => $request->brand_id,
-            'vendor_id' => $request->vendor_id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'cost_price' => $request->cost_price,
-            'sale_price' => $request->sale_price,
-            'quantity' => $request->quantity,
-            'min_quantity' => $request->min_quantity,
-            'sizes' => $request->sizes,
-            'colors' => $request->colors,
-            'warranty' => $request->warranty,
-            'status' => $request->status,
-            'updated_by' => auth()->user()->name, // Get the authenticated user's ID
+            'category_id'   => $request->category_id,
+            'brand_id'      => $request->brand_id,
+            'vendor_id'     => $request->vendor_id,
+            'title'         => $request->title,
+            'description'   => $request->description,
+            'cost_price'    => $request->cost_price,
+            'sale_price'    => $request->sale_price,
+            'quantity'      => $request->quantity,
+            'min_quantity'  => $request->min_quantity,
+            'sizes'         => $request->sizes,
+            'colors'        => $request->colors,
+            'warranty'      => $request->warranty,
+            'status'        => $request->status,
+            'updated_by'    => auth()->user()->name, // Get the authenticated user's ID
         ]);
 
         return Inertia::render('Admin/Products/Edit');
@@ -129,6 +129,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // dd($product);
         $product->delete();
 
         return back()->with('success', 'Deleted Successfully !');
