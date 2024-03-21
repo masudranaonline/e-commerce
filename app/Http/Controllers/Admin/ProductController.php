@@ -91,7 +91,7 @@ class ProductController extends Controller
         $brands = Brand::all();
         $vendors = Vendor::all();
         return Inertia::render('Admin/Products/Edit', [
-            'product' => $product,
+            'product' => $product->with('media')->first(),
             'categories' => $categories,
             'brands' => $brands,
             'vendors' => $vendors,
@@ -149,7 +149,8 @@ class ProductController extends Controller
 
     public function trashList()
     {
-        $products = Product::onlyTrashed()->paginate(10);
+        $products = Product::with(['category', 'media'])->onlyTrashed()->paginate(10);
+        // return $products;
         return Inertia::render('Admin/Products/TrashList', [
             'products' => $products,
         ]);

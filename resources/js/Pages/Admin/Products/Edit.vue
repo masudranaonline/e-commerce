@@ -2,6 +2,7 @@
     import AppLayout from '@/Layouts/Admin/AppLayout.vue';
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
     import InputLabel from '@/Components/Admin/InputLabel.vue';
+    import ImageInput from '@/Components/ImageInput.vue';
     import {
         useForm
     } from '@inertiajs/vue3';
@@ -141,6 +142,11 @@
                         </select>
                     </form>
                 </div>
+            </div>
+            <div class="mb-6">
+                <InputLabel>Upload Image</InputLabel>
+                <ImageInput v-model="form.image" @fileChange="fileChange" source="image" type="file"
+                    class="h-28 w-28" />
             </div>
             <div class="mb-6">
                 <InputLabel>Discriptions</InputLabel>

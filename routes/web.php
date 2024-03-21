@@ -32,6 +32,11 @@ Route::group(['prefix' => 'cp'], function () {
     Route::resource('products', ProductController::class);
     Route::resource('vendors', VendorController::class);
     Route::resource('settings', SettingController::class);
+
+    Route::get('/trashlist', [ProductController::class, 'trashList'])->name('products.trashList');
+    Route::get('/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
+    Route::post('/forceDelete/{product}', [ProductController::class, 'forceDelete'])->name('product.forceDelete');
+
     
 
 })->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
