@@ -22,19 +22,19 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id'   => 'required',
-            'brand_id'      => 'required',
-            'vendor_id'     => 'required',
-            'title'         => 'required',
-            'description'   => 'required',
-            'cost_price'    => 'required',
-            'sale_price'    => 'required',
-            'quantity'      => 'required',
-            'min_quantity'  => 'required',
-            'sizes'         => 'required',
-            'colors'        => 'required',
-            'warranty'      => 'required',
-            'status'        => 'required',
+            // 'category_id'   => 'required',
+            // 'brand_id'      => 'required',
+            // 'vendor_id'     => 'required',
+            // 'title'         => 'required',
+            // 'description'   => 'required',
+            // 'cost_price'    => 'required',
+            // 'sale_price'    => 'required',
+            // 'quantity'      => 'required',
+            // 'min_quantity'  => 'required',
+            // 'sizes'         => 'required',
+            // 'colors'        => 'required',
+            // 'warranty'      => 'required',
+            // 'status'        => 'required',
             
         ];
     }

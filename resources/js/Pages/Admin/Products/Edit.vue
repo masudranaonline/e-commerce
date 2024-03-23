@@ -14,6 +14,8 @@
         vendors: Object
     })
 
+    // const initialImage = props.product.media.length > 0 ? props.product.media[0].original_url : null;
+
     const form = useForm({
         category_id: props.product.category_id,
         brand_id: props.product.brand_id,
@@ -28,11 +30,14 @@
         colors: props.product.colors,
         warranty: props.product.warranty,
         status: props.product.status,
+        image: null,
+
+        _method:'PUT'
         // product_images: '',
     });
 
     const SubmitProductUpdate = async () => {
-        await form.put(route('products.update', {
+        await form.post(route('products.update', {
             product: props.product.id
         }), {
             onSuccess: (Response) => {
@@ -43,7 +48,13 @@
             },
             preserveScroll: true
         })
-    }
+    };
+
+    const fileChange = (value) => {
+        if (value.source === "image") {
+            form.image = value.file;
+        }
+    };
 </script>
 <template>
     <AppLayout>
@@ -60,7 +71,7 @@
                     <select id="category" name="category" v-model="form.category_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option v-for="category in props.categories" :key="category.id" :value="category.id">
-                            {{ category.name }}
+                            {{ category . name }}
                         </option>
                     </select>
                 </div>
@@ -70,7 +81,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
                         <option v-for="brand in props.brands" :key="brand.id" :value="brand.id">
-                            {{ brand.name }}</option>
+                            {{ brand . name }}</option>
                     </select>
                 </div>
                 <div>
@@ -79,7 +90,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
                         <option v-for="vendor in props.vendors" :key="vendor.id" :value="vendor.id">
-                            {{ vendor.name }}</option>
+                            {{ vendor . name }}</option>
                     </select>
                 </div>
                 <div>
@@ -145,8 +156,14 @@
             </div>
             <div class="mb-6">
                 <InputLabel>Upload Image</InputLabel>
-                <ImageInput v-model="form.image" @fileChange="fileChange" source="image" type="file"
-                    class="h-28 w-28" />
+                <div class="flex gap-3">
+                    <ImageInput v-model="form.image" @fileChange="fileChange" :image="props.product.media[0].original_url" source="image" type="file"
+                        class="h-28 w-28" />
+                    <!-- Displaying the image -->
+                    <div v-if="form.image" class="mt-2">
+                        <img :src="form.image" alt="" class="h-40 w-auto">
+                    </div>
+                </div>
             </div>
             <div class="mb-6">
                 <InputLabel>Discriptions</InputLabel>

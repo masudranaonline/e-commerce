@@ -87,11 +87,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $product = Product::with('media')->find($product->id);
         $categories = Category::all();
         $brands = Brand::all();
         $vendors = Vendor::all();
         return Inertia::render('Admin/Products/Edit', [
-            'product' => $product->with('media')->first(),
+            'product' => $product,
             'categories' => $categories,
             'brands' => $brands,
             'vendors' => $vendors,
@@ -101,25 +102,32 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-       
+        // return $request->all();
         $product->update([
-            'category_id'   => $request->category_id,
-            'brand_id'      => $request->brand_id,
-            'vendor_id'     => $request->vendor_id,
-            'title'         => $request->title,
-            'description'   => $request->description,
-            'cost_price'    => $request->cost_price,
-            'sale_price'    => $request->sale_price,
-            'quantity'      => $request->quantity,
-            'min_quantity'  => $request->min_quantity,
-            'sizes'         => $request->sizes,
-            'colors'        => $request->colors,
-            'warranty'      => $request->warranty,
-            'status'        => $request->status,
-            'updated_by'    => auth()->user()->name, // Get the authenticated user's ID
+            'category_id' => $request->category_id,
+            'brand_id' => $request->brand_id,
+            'vendor_id' => $request->vendor_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'cost_price' => $request->cost_price,
+            'sale_price' => $request->sale_price,
+            'quantity' => $request->quantity,
+            'min_quantity' => $request->min_quantity,
+            'sizes' => $request->sizes,
+            'colors' => $request->colors,
+            'warranty' => $request->warranty,
+            'status' => $request->status,
+            'updated_by' => auth()->user()->name, // Get the authenticated user's ID
         ]);
+        if ($request->hasFile('image')) {
+            // Remove existing media
+            $product->clearMediaCollection('image');
+
+            // Add new media
+            $product->addMediaFromRequest('image')->toMediaCollection('image');
+        }
 
         return Inertia::render('Admin/Products/Edit');
     }
@@ -150,7 +158,9 @@ class ProductController extends Controller
 
     public function trashList()
     {
-        $products = Product::with(['category', 'media'])->onlyTrashed()->paginate(10);
+        $products = Product::with(['category', 'media'])
+            ->onlyTrashed()
+            ->paginate(10);
         // return $products;
         return Inertia::render('Admin/Products/TrashList', [
             'products' => $products,
