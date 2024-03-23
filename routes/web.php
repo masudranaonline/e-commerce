@@ -35,7 +35,7 @@ Route::group(['prefix' => 'cp'], function () {
 
     Route::get('/trashlist', [ProductController::class, 'trashList'])->name('products.trashList');
     Route::get('/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
-    Route::post('/forceDelete/{product}', [ProductController::class, 'forceDelete'])->name('product.forceDelete');
+    Route::delete('/forceDelete/{product}', [ProductController::class, 'forceDelete'])->name('product.forceDelete');
 
     
 

@@ -137,6 +137,7 @@ class ProductController extends Controller
 
     public function forceDelete($product)
     {
+        // return $product;
         $product = Product::withTrashed()->find($product);
         $product->forceDelete();
     }
