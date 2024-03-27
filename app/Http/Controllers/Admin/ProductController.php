@@ -137,15 +137,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // dd($product);
         $product->delete();
-
         return back()->with('success', 'Deleted Successfully !');
     }
 
     public function forceDelete($product)
     {
-        // return $product;
         $product = Product::withTrashed()->find($product);
         $product->forceDelete();
     }
@@ -153,14 +150,13 @@ class ProductController extends Controller
     // Trash List Deleted Products
     public function deleteTrashList()
     {
-        // return $product;
         $product = Product::onlyTrashed()->get();
         $product->each->forceDelete();
     }
 
+    //Restore Single product
     public function restore($preduct)
     {
-        // dd($preduct);
         $product = Product::withTrashed()->find($preduct);
         
         if ($product) {
@@ -181,6 +177,7 @@ class ProductController extends Controller
         }
     }
 
+    //show TrashList Product
     public function trashList()
     {
         $products = Product::with(['category', 'media'])

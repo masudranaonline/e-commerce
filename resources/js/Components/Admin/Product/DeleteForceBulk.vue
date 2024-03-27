@@ -1,14 +1,14 @@
 <script setup>
-import ConfirmationModal from "@/Components/Admin/ConfirmationModal.vue";
-import DangerButton from "@/Components/Admin/DangerButton.vue";
-import SecondaryButton from "@/Components/Admin/SecondaryButton.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
+import DangerButton from "@/Components/DangerButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 import { useForm } from "@inertiajs/vue3";
-import { ref, watchEffect, inject } from "vue";
+import { ref, defineEmits, inject, watchEffect } from "vue";
 import { TrashIcon } from "@heroicons/vue/24/outline";
 
-const updateItems = inject('updateItems');
+const removeBulkItems = inject('removeBulkItems');
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["open"]);
 const show = ref(false);
 const props = defineProps({
     title: String,
@@ -31,12 +31,11 @@ watchEffect(() => {
 });
 
 const submit = () => {
-    form.delete(route("banks.destroy.bulk"), {
+    form.delete(route("gallery.items.destroy.force.bulk"), {
         preserveScroll: true,
-        onSuccess: (response) => {
+        onSuccess: () => {
             closeModal();
-            emit("close");
-            updateItems(response.props.banks);
+            removeBulkItems(form.id);
         },
         onError: () => null,
         onFinish: () => null,
@@ -51,18 +50,18 @@ const closeModal = () => {
     <div>
         <DangerButton
             class="rounded-none"
-            @click.prevent="show = true"
+            @click.prevent="(show = true), emit('open')"
         >
             <TrashIcon class="w-4 h-auto" />
         </DangerButton>
+
         <ConfirmationModal :show="show" @close="closeModal">
             <template #title>
-                {{ lang().label.delete_selected }} {{ props.title }}
+                {{ lang().label.delete }} {{ props.title }}
             </template>
 
             <template #content>
-                {{ lang().label.delete_confirm }}
-                {{ props.selectedId?.length }} {{ props.title }}?
+                {{ lang().label.delete_confirm }} {{ props.item?.name }}?
             </template>
 
             <template #footer>
