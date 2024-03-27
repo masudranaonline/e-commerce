@@ -39,7 +39,6 @@ Route::group(['prefix' => 'cp'], function () {
     Route::delete('/forceDelete/{product}', [ProductController::class, 'forceDelete'])->name('product.forceDelete');
     Route::delete('/deletetrashlist', [ProductController::class, 'deleteTrashList'])->name('products.destroy.force.all');
 
-    
 
 })->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
 

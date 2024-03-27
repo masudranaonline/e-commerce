@@ -19,11 +19,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with(['category', 'media'])->paginate(10);
+        $products = Product::with(['category', 'media'])->get();
         // return $products;
 
         return Inertia::render('Admin/Products/Index', [
             'products' => $products,
+            'titlte' => 'Products',
         ]);
     }
 
@@ -158,7 +159,7 @@ class ProductController extends Controller
     public function restore($preduct)
     {
         $product = Product::withTrashed()->find($preduct);
-        
+
         if ($product) {
             $product->restore();
             return back()->with('success', 'Product has been restored successfully.');
@@ -171,7 +172,7 @@ class ProductController extends Controller
     public function restoreAll()
     {
         $products = Product::onlyTrashed()->get();
-    
+
         foreach ($products as $product) {
             $product->restore();
         }
