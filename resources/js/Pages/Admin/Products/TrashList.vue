@@ -1,8 +1,10 @@
 <script setup>
     import AppLayout from '@/Layouts/Admin/AppLayout.vue';
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
-    import DeleteForce from '@/Components/Admin/DeleteForce.vue';
-    import DeleteForceAll from '@/Components/Admin/DeleteForceAll.vue';
+    import DeleteForce from '@/Components/Admin/Product/DeleteForce.vue';
+    import DeleteForceAll from '@/Components/Admin/Product/DeleteForceAll.vue';
+    import RestoreAll from '@/Components/Admin/Product/RestoreAll.vue';
+    import Restore from '@/Components/Admin/Product/Restore.vue';
     
     import {
         Link
@@ -45,10 +47,11 @@
                         </div>
                         <div
                             class="flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
-                            <button type="button"
+                            <!-- <button type="button"
                                 class="flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-200 rounded-lg">
                                 Restore all
-                            </button>
+                            </button> -->
+                            <RestoreAll />
                             <!-- <button type="button"
                                 class="flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-200">
                                 Delete All
@@ -112,14 +115,15 @@
                                     </td>
                                     <td class="px-4 py-2">
                                         <div class="flex gap-3">
-                                            <a href="">
+                                            <!-- <a href="">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-6 h-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                                                 </svg>
-                                            </a>
+                                            </a> -->
+                                            <Restore :title="product.name" :item="product" @open="item=product" />
                                             <DeleteForce :title="product.name" :item="product" @open="item=product" />
                                             <!-- <DeleteForce class="w-6 h-6" :title="product.title" :item="product" @open="product=product" /> -->
                                             <!-- <Link :href="route('product.forceDelete', { product: product.id})" >

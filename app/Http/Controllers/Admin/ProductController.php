@@ -158,10 +158,27 @@ class ProductController extends Controller
         $product->each->forceDelete();
     }
 
-    public function restore($product)
+    public function restore($preduct)
     {
-        $product = Product::withTrashed()->find($product);
-        $product->restore();
+        // dd($preduct);
+        $product = Product::withTrashed()->find($preduct);
+        
+        if ($product) {
+            $product->restore();
+            return back()->with('success', 'Product has been restored successfully.');
+        } else {
+            return back()->with('error', 'Product not found.');
+        }
+    }
+
+    // Restore All Product Data
+    public function restoreAll()
+    {
+        $products = Product::onlyTrashed()->get();
+    
+        foreach ($products as $product) {
+            $product->restore();
+        }
     }
 
     public function trashList()

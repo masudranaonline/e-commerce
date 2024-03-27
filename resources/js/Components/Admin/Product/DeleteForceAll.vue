@@ -1,32 +1,28 @@
 <script setup>
-
-import ConfirmationModal from "./ConfirmationModal.vue";
-import ActionButton from "./ActionButton.vue";
-import DangerButton from "./DangerButton.vue";
-import SecondaryButton from "./SecondaryButton.vue";
-// import 
-
+import ConfirmationModal from "../ConfirmationModal.vue";
+import DangerButton from "../DangerButton.vue";
+import SecondaryButton from "../SecondaryButton.vue";
 import { useForm } from "@inertiajs/vue3";
-import { ref, defineEmits, inject } from "vue";
-import { TrashIcon } from "@heroicons/vue/24/outline";
+import { ref, inject } from "vue";
+import ActionButton from "../ActionButton.vue";
 
-// const removeItem = inject('removeItem');
+const removeAllItems = inject('removeAllItems');
 
-const emit = defineEmits(["open"]);
+const emit = defineEmits(["close"]);
 const show = ref(false);
 const props = defineProps({
     title: String,
-    item: Object,
 });
 
 const form = useForm({});
 
 const submit = () => {
-    form.delete(route("product.forceDelete", props.item?.id), {
+    form.delete(route("products.destroy.force.all"), {
         preserveScroll: true,
         onSuccess: () => {
             closeModal();
-            removeItem(props.item?.id);
+            emit("close");
+            removeAllItems();
         },
         onError: () => null,
         onFinish: () => null,
@@ -40,10 +36,12 @@ const closeModal = () => {
 <template>
     <div>
         <ActionButton
+            class="rounded-none"
             variant="danger"
-            @click.prevent="(show = true), emit('open')"
+            @click.prevent="show = true"
         >
-            <TrashIcon class="w-4 h-auto" />
+            <!-- <TrashIcon class="w-4 h-auto" /> -->
+            Empty Trash
         </ActionButton>
         <ConfirmationModal :show="show" @close="closeModal">
             <template #title>
@@ -51,12 +49,13 @@ const closeModal = () => {
             </template>
 
             <template #content>
-                <h1 class="font-bold text-2xl">Are you sure you want to delete {{ props.item?.name }}?</h1>
+                Are you sure you want to delete all
+                {{ props.selectedId?.length }} {{ props.title }}?
             </template>
 
             <template #footer>
                 <SecondaryButton @click="closeModal">
-                    cancle
+                    Cancle
                 </SecondaryButton>
 
                 <DangerButton
@@ -65,7 +64,7 @@ const closeModal = () => {
                     :disabled="form.processing"
                     @click="submit"
                 >
-                    delete
+                    Delete
                     {{ form.processing ? "..." : "" }}
                 </DangerButton>
             </template>

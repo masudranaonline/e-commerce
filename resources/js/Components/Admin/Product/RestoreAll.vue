@@ -1,12 +1,12 @@
 <script setup>
-import ConfirmationModal from "./ConfirmationModal.vue";
-import DangerButton from "./DangerButton.vue";
-import SecondaryButton from "./SecondaryButton.vue";
+import ConfirmationModal from "../ConfirmationModal.vue";
+import PrimaryButton from "../PrimaryButton.vue";
+import SecondaryButton from "../SecondaryButton.vue";
 import { useForm } from "@inertiajs/vue3";
-import { ref, inject } from "vue";
-import ActionButton from "./ActionButton.vue";
+import { ref, watchEffect, inject } from "vue";
 
 const removeAllItems = inject('removeAllItems');
+const gallery = inject('gallery');
 
 const emit = defineEmits(["close"]);
 const show = ref(false);
@@ -17,7 +17,7 @@ const props = defineProps({
 const form = useForm({});
 
 const submit = () => {
-    form.delete(route("products.destroy.force.all"), {
+    form.post(route("products.restoreAll"), {
         preserveScroll: true,
         onSuccess: () => {
             closeModal();
@@ -35,21 +35,19 @@ const closeModal = () => {
 </script>
 <template>
     <div>
-        <ActionButton
+        <PrimaryButton
             class="rounded-none"
-            variant="danger"
             @click.prevent="show = true"
         >
-            <!-- <TrashIcon class="w-4 h-auto" /> -->
-            Empty Trash
-        </ActionButton>
+            Restore All
+        </PrimaryButton>
         <ConfirmationModal :show="show" @close="closeModal">
             <template #title>
-                delete {{ props.title }}
+                Restore {{ props.title }}
             </template>
 
             <template #content>
-                Are you sure you want to delete all
+                Are you sure you want to restore all!
                 {{ props.selectedId?.length }} {{ props.title }}?
             </template>
 
@@ -58,15 +56,15 @@ const closeModal = () => {
                     Cancle
                 </SecondaryButton>
 
-                <DangerButton
+                <PrimaryButton
                     class="ml-3"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                     @click="submit"
                 >
-                    Delete
+                    Restore
                     {{ form.processing ? "..." : "" }}
-                </DangerButton>
+                </PrimaryButton>
             </template>
         </ConfirmationModal>
     </div>
