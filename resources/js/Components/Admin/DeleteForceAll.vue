@@ -1,10 +1,10 @@
 <script setup>
-import ConfirmationModal from "@/Components/ConfirmationModal.vue";
-import DangerButton from "@/Components/DangerButton.vue";
-import SecondaryButton from "@/Components/SecondaryButton.vue";
+import ConfirmationModal from "./ConfirmationModal.vue";
+import DangerButton from "./DangerButton.vue";
+import SecondaryButton from "./SecondaryButton.vue";
 import { useForm } from "@inertiajs/vue3";
 import { ref, inject } from "vue";
-import ActionButton from "@/Components/ActionButton.vue";
+import ActionButton from "./ActionButton.vue";
 
 const removeAllItems = inject('removeAllItems');
 
@@ -17,7 +17,7 @@ const props = defineProps({
 const form = useForm({});
 
 const submit = () => {
-    form.delete(route("banks.destroy.force.all"), {
+    form.delete(route("products.destroy.force.all"), {
         preserveScroll: true,
         onSuccess: () => {
             closeModal();
@@ -45,17 +45,17 @@ const closeModal = () => {
         </ActionButton>
         <ConfirmationModal :show="show" @close="closeModal">
             <template #title>
-                {{ lang().label.delete_selected }} {{ props.title }}
+                delete {{ props.title }}
             </template>
 
             <template #content>
-                {{ lang().label.delete_confirm }}
+                Are you sure you want to delete all
                 {{ props.selectedId?.length }} {{ props.title }}?
             </template>
 
             <template #footer>
                 <SecondaryButton @click="closeModal">
-                    {{ lang().button.cancel }}
+                    Cancle
                 </SecondaryButton>
 
                 <DangerButton
@@ -64,7 +64,7 @@ const closeModal = () => {
                     :disabled="form.processing"
                     @click="submit"
                 >
-                    {{ lang().button.delete }}
+                    Delete
                     {{ form.processing ? "..." : "" }}
                 </DangerButton>
             </template>

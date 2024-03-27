@@ -2,6 +2,7 @@
     import AppLayout from '@/Layouts/Admin/AppLayout.vue';
     import Breadcrumb from '@/Components/Admin/Breadcrumb.vue';
     import DeleteForce from '@/Components/Admin/DeleteForce.vue';
+    import DeleteForceAll from '@/Components/Admin/DeleteForceAll.vue';
     
     import {
         Link
@@ -48,10 +49,13 @@
                                 class="flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-200 rounded-lg">
                                 Restore all
                             </button>
-                            <button type="button"
+                            <!-- <button type="button"
                                 class="flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-200">
                                 Delete All
-                            </button>
+                            </button> -->
+                            <DeleteForceAll   />
+                            <!-- <DeleteForce :title="product.name" :item="product" @open="item=product" /> -->
+
                             <!-- <DengerButton>Deleted All</DengerButton> -->
                         </div>
                     </div>

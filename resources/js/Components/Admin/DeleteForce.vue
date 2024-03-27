@@ -51,7 +51,7 @@ const closeModal = () => {
             </template>
 
             <template #content>
-                confirmDelete {{ props.item?.name }}?
+                <h1 class="font-bold text-2xl">Are you sure you want to delete {{ props.item?.name }}?</h1>
             </template>
 
             <template #footer>

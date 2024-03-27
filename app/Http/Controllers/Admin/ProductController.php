@@ -150,6 +150,14 @@ class ProductController extends Controller
         $product->forceDelete();
     }
 
+    // Trash List Deleted Products
+    public function deleteTrashList()
+    {
+        // return $product;
+        $product = Product::onlyTrashed()->get();
+        $product->each->forceDelete();
+    }
+
     public function restore($product)
     {
         $product = Product::withTrashed()->find($product);

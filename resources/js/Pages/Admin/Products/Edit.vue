@@ -157,7 +157,7 @@
             <div class="mb-6">
                 <InputLabel>Upload Image</InputLabel>
                 <div class="flex gap-3">
-                    <ImageInput v-model="form.image" @fileChange="fileChange" :image="props.product.media[0].original_url" source="image" type="file"
+                    <ImageInput v-model="form.image" @fileChange="fileChange" :image="props.product.media.length > 0 ? props.product.media[0].original_url : null" source="image" type="file"
                         class="h-28 w-28" />
                     <!-- Displaying the image -->
                     <div v-if="form.image" class="mt-2">
