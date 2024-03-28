@@ -34,11 +34,11 @@
             </div>
             <div class="flex justify-between">
                 <button
-                    class="text-xs md:text-xs lg:text-sm font-medium space-x-2 border px-px md:px-2 py-1 bg-blue-600  hover:bg-blue-800 text-white rounded-sm">
+                    class="text-xs md:text-xs lg:text-xs font-medium space-x-2 border px-px md:px-2 py-1 bg-blue-600  hover:bg-blue-800 text-white rounded-sm">
                     Add to cart
                 </button>
                 <button
-                    class="text-xs md:text-xs lg:text-sm font-medium space-x-2 border px-px md:px-2 py-1 bg-yellow-400  hover:bg-yellow-500 text-white rounded-sm">
+                    class="text-xs md:text-xs lg:text-xs font-medium space-x-2 border px-px md:px-2 py-1 bg-yellow-400  hover:bg-yellow-500 text-white rounded-sm">
                     Order Now
                 </button>
             </div>

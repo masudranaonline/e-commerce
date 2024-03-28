@@ -36,11 +36,15 @@
                             <div class=" border px-2 py-2 rounded-md bg-gray-200 border-gray-200">
                                 <div class="flex items-center ps-3">
                                     <input id="vue-checkbox-list" type="checkbox" value=""
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                                        >
+                                        <!-- <DeleteBulk /> -->
                                     <label for="vue-checkbox-list"
                                         class="w-full  ms-2 text-sm font-medium text-gray-900">Select
                                         all</label>
+
                                 </div>
+
                             </div>
                             <h5>
                                 <span class="text-gray-500">Total Selected:</span>
